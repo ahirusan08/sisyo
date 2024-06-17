@@ -28,7 +28,7 @@ public class HostAccountController {
 			) {
 		//エラー処理あり
 		
-		
+		//
 		//正常時
 		//HostAccountクラスに名前をセット(セッション管理)
 		
