@@ -28,8 +28,10 @@ public class HostAccountController {
 			) {
 		//エラー処理あり
 		
-		//
+		
 		//正常時
+		
+		
 		//HostAccountクラスに名前をセット(セッション管理)
 		
 		return "select";//G202機能選択画面へ
