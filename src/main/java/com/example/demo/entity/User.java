@@ -1,3 +1,4 @@
+//作成中
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
