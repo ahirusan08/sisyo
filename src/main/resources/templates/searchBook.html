@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>蔵書検索</title>
+</head>
+
+<body>
+	<h1>蔵書検索</h1>
+	<hr>
+	<!--BookController-->
+	<form action="">
+
+		<input type="month" name="month">
+		<input type="submit" value="検索">
+	</form>
+	<br>
+	
+	<table border="1">
+		<tr>
+			<th colspan="33">貸し出し状況</th>
+		</tr>
+		<tr>
+			<th>本ID</th>
+			<th>タイトル</th>
+			<th>著者名</th>
+			<th:block th:each="date:${#numbers.sequence(1,30)}">
+				<td>[[${date}]]</td><!--30日って打ってるだけ↑-->
+			</th:block>
+		</tr>
+		<tr>
+			<td>1</td>
+			<th>あいすの本</th>
+			<th>あいすはかせ</th>
+			<th:block th:each="date:${#numbers.sequence(1,30)}">
+				<td>　</td>
+			</th:block>
+		</tr>
+
+		<tr>
+
+
+		</tr>
+
+
+	</table>
+
+</body>
+
+</html>

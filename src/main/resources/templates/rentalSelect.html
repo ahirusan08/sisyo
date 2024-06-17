@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>貸出・返却選択</title>
+</head>
+
+<body>
+	<h1>貸出・返却選択</h1>
+	<hr>
+	<form action="/host/rental/process">
+		<table border="1">
+			<tr>
+				<th>タイトル</th>
+				<td>ドラえもん</td>
+			</tr>
+			<tr>
+				<th>名前</th>
+				<td>あひる</td>
+			</tr>
+		</table>
+		<input type="radio" name="rental" value="1" checked>貸出　
+		<input type="radio" name="rental" value="0">返却
+		<br>
+		<input type="submit" value="決定">
+	</form>
+
+</body>
+
+</html>

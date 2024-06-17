@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>貸出・返却</title>
+</head>
+
+<body>
+	<h1>貸出・返却</h1>
+	<hr>
+	<form action="/host/rental/select">
+		<table border="1">
+			<tr>
+				<th>本ID</th>
+				<td>
+					<input type="text" name="bookId"><br>
+				</td>
+			</tr>
+			<tr>
+				<th>利用者ID</th>
+				<td>
+					<input type="text" name="userId"><br>
+				</td>
+			</tr>
+
+		</table>
+		<br>
+		<input type="submit" value="次へ">
+	</form>
+
+</body>
+
+</html>

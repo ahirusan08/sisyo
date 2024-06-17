@@ -2,9 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>利用者ログイン</title>
 </head>
 <body>
-
+<h1>利用者ログイン</h1>
+<hr>
+<form action="/user/login">
+	<!--UserAccountControllerへ -->
+	<table border="1">
+		<tr>
+			<th>メールアドレス</th>
+			<td>
+				<input type="text" name="email">
+			</td>
+		</tr>
+		<tr>
+			<th>パスワード</th>
+			<td>
+				<input type="text" name="password">
+			</td>
+		</tr>
+		
+	</table>
+	<input type="submit" value="ログイン">
+</form>
+<br>
+<a href="">新規利用者登録</a>
 </body>
 </html>
