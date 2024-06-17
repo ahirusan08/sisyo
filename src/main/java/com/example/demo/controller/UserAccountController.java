@@ -4,6 +4,7 @@ package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -25,7 +26,7 @@ public class UserAccountController {
 		return "userLogin";//G101利用者ログイン画面へ
 	}
 	
-	@GetMapping("/login")
+	@PostMapping("/login")
 	public String login(//@RequestParam(name="email" required=false) String email
 			) {
 		//エラー処理あり
@@ -43,7 +44,7 @@ public class UserAccountController {
 		return "addUser";//G111利用者登録画面へ
 	}
 	
-	@GetMapping("/add/check")
+	@PostMapping("/add/check")
 	public String addCheck(
 			//@RequestParam(name="name" required=false) String name
 			//Model m
@@ -61,7 +62,7 @@ public class UserAccountController {
 		return "checkAddUser";//G112内容確認画面へ
 	}
 	
-	@GetMapping("/add/done")
+	@PostMapping("/add/done")
 	public String addUser(//@RequestParam(name="name" required=false) String name
 			//Model m
 			//みたいな感じ^^
@@ -77,7 +78,7 @@ public class UserAccountController {
 		//m.addAttribute("name",name);
 		//同様にメアド、idを保持
 	
-		return "DoneAddUser";//登録完了画面へ
+		return "doneAddUser";//登録完了画面へ
 	}
 
 
