@@ -1,4 +1,4 @@
-//担当：さきちゃん あああ
+//担当：さきちゃん 
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
