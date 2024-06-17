@@ -27,7 +27,7 @@ public class HostAccountController {
 			
 			) {
 		//エラー処理あり
-		
+		//aaa
 		
 		//正常時
 		
