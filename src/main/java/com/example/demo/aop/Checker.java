@@ -28,7 +28,7 @@ public class Checker {
 		LocalDateTime today = LocalDateTime.now();
 		
 		List<Rental> list = rentalrepository.findByReturnDateIsNullAndLimitDateLessThan(today);
-		System.out.println("kazu:" + list.size());
+		
 		
 		for (Rental rental : list) {
 			
