@@ -40,7 +40,7 @@ public class HostController {
 
 	@Autowired
 	HttpSession session;
-	
+
 	@Autowired
 	HostAccount account;
 
@@ -93,12 +93,12 @@ public class HostController {
 		} else {
 			error.add("入力した利用者IDは登録されていません。");
 		}
-		
-		if(error.size() != 0  ) {
+
+		if (error.size() != 0) {
 			model.addAttribute("error", error);
 			return "rentalSearch";
 		}
-		
+
 		//セッションスコープにsetAttributeで保存 キー名迷い中
 		session.setAttribute("book", book);
 		session.setAttribute("userId", userId);
@@ -125,10 +125,17 @@ public class HostController {
 		Book book = (Book) session.getAttribute("book");
 		Integer userId = (Integer) session.getAttribute("userId");
 
+		Optional<Rental> record = rentalRepository.findByBookIdAndUserIdAndVersionNo(book.getId(), userId, 1);
+		if (record.isPresent()) {
+			String error = "この本は既に貸出されています";
+			model.addAttribute("error", error);
+			return "rentalSelect";
+		}
 		//貸出処理
 		Rental rentalrecord = rentalRepository.saveAndFlush(new Rental(userId, book.getId(), account.getId()));
 
 		if (rentalrecord == null) {
+
 			return "rentalSelect";
 		}
 		LocalDateTime time = rentalrecord.getLimitDate();
@@ -139,20 +146,30 @@ public class HostController {
 	}
 
 	@GetMapping("/rental/return")
-	public String returnBook() {
+	public String returnBook(Model model) {
 		//返却処理
 		Book book = (Book) session.getAttribute("book");
-		Integer bookId = book.getId();
 		Integer userId = (Integer) session.getAttribute("userId");
 
-		Optional<Rental> rentalrecord = rentalRepository.findByBookIdAndUserId(bookId, userId);
+		//返却処理
+		Optional<Rental> rentalrecord = rentalRepository.findByBookIdAndUserIdAndVersionNo(book.getId(), userId, 1);
 
-		if (rentalrecord.isEmpty() == false) {
+		if (rentalrecord.isPresent()) {
 			Rental rent = rentalrecord.get();
 			rent.update(1);
 			rentalRepository.saveAndFlush(rent);
 		} else {
-			return "rentalSelect";
+			Optional<Rental> bookrecord = rentalRepository.findByBookIdAndVersionNo(book.getId(), 1);
+			if (bookrecord.isPresent()) {
+				String error = "この本は別の利用者によって貸出されています";
+				model.addAttribute("error", error);
+				return "rentalSelect";
+
+			} else {
+				String error = "この本は貸出されていません";
+				model.addAttribute("error", error);
+				return "rentalSelect";
+			}
 		}
 
 		return "returnBook";//G214返却完了
