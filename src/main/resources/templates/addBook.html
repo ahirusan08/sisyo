@@ -10,18 +10,19 @@
 <body>
 	<h1>蔵書登録</h1>
 	<hr>
+	<div>[[${error}]]</div>
 	<form action="/host/add/book/done" method="post">
 		<table border="1">
 			<tr>
 				<th>タイトル</th>
 				<td>
-					<input type="text" name="name"><br>
+					<input type="text" name="title" maxlength="100"><br>
 				</td>
 			</tr>
 			<tr>
 				<th>著者名</th>
 				<td>
-					<input type="text" name="email"><br>
+					<input type="text" name="author" maxlength="100"><br>
 				</td>
 			</tr>
 			

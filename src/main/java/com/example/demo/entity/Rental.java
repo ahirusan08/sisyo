@@ -59,6 +59,8 @@ public class Rental {
 	public Rental(Integer userId, Integer bookId,Integer createrId) {
 		this.userId = userId;
 		this.bookId = bookId;
+		this.rentalDate =LocalDateTime.now();
+		this.limitDate =LocalDateTime.now().plusDays(5);
 		create(createrId);
 	}
 	
@@ -72,6 +74,7 @@ public class Rental {
 	
 	public void update(Integer updaterId) {
 		LocalDateTime nowDate=LocalDateTime.now();
+		returnDate = nowDate;
 		updateAt=nowDate;
 		updateBy=updaterId;
 		versionNo++;
