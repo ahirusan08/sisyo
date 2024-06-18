@@ -61,9 +61,9 @@ public class HostAccountController {
 			return "hostLogin";
 		}
 
-		String name = host.getName();
-		haccount.setName(name);
-
+		haccount.setName(host.getName());
+		haccount.setId(host.getId());
+		
 		return "select";//G202機能選択画面へ
 
 	}

@@ -76,8 +76,8 @@ public class UserAccountController {
 			//正常時
 			//UserAccountクラスに名前をセット(セッション管理)
 			user = record.get();
-			String name = user.getName();
-			userAccount.setName(name);
+			userAccount.setName(user.getName());
+			userAccount.setId(user.getId());
 		} else {
 			m.addAttribute("error", "メールアドレスまたはパスワードが一致していません");
 			return "userLogin";

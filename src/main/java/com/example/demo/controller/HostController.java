@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Book;
 import com.example.demo.entity.Rental;
 import com.example.demo.entity.User;
+import com.example.demo.model.HostAccount;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.repository.RentalRepository;
 import com.example.demo.repository.UserRepository;
@@ -39,6 +40,9 @@ public class HostController {
 
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	HostAccount account;
 
 	LocalDateTime nowDate = LocalDateTime.now();
 
@@ -122,7 +126,7 @@ public class HostController {
 		Integer userId = (Integer) session.getAttribute("userId");
 
 		//貸出処理
-		Rental rentalrecord = rentalRepository.saveAndFlush(new Rental(userId, book.getId(), 1));
+		Rental rentalrecord = rentalRepository.saveAndFlush(new Rental(userId, book.getId(), account.getId()));
 
 		if (rentalrecord == null) {
 			return "rentalSelect";
@@ -171,7 +175,7 @@ public class HostController {
 			return "addBook";
 		}
 
-		Book book = new Book(title, author, 1);
+		Book book = new Book(title, author, account.getId());
 		bookRepository.save(book);
 
 		model.addAttribute("title", title);

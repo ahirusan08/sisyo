@@ -49,8 +49,8 @@ public class BookController {
 		m.addAttribute("maxDay", maxDay);
 		
 		//貸出状況表示
-		List<Book> rentals=bookRepository.rental(ym+"%");
-		List<Book> limits=bookRepository.limit(ym+"%");
+		//List<Book> rentals=bookRepository.rental(ym+"%");
+		//List<Book> limits=bookRepository.limit(ym+"%");
 		
 		return "searchBook";
 	}
