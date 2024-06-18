@@ -10,13 +10,18 @@
 <body>
 	<h1>管理者ログイン</h1>
 	<hr>
-	<form action="">
+	
+<!--	<span th:if="${error}">-->
+		[[${error}]]
+<!--</span>-->
+
+	<form action="/host/login" method="post">
 		<!--HostAccountControllerへ -->
 		<table border="1">
 			<tr>
 				<th>管理者ID</th>
 				<td>
-					<input type="text" name="id">
+					<input type="text" name="id" maxlength="16"> 
 				</td>
 			</tr>
 			<tr>
