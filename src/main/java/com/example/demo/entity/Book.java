@@ -45,17 +45,30 @@ public class Book {
 
 	}
 
-	public Book(String title, String author) {
-		super();
+	//	public Book(Integer id, String title, String author) {
+	//		this.id = id;
+	//		this.title = title;
+	//		this.author = author;
+	//	}
+	
+	public Book(String title, String author,Integer createrId) {
 		this.title = title;
 		this.author = author;
+		create(createrId);
+	}
+	
+	private void create(Integer createrId) {
+		LocalDateTime nowDate = LocalDateTime.now();
+		createdAt = nowDate;
+		createdBy = createrId;//Hostの作成者はHost本人
+		versionNo = 1;
+		deleteFlag = 0;
 	}
 
-	public Book(Integer id, String title, String author) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.author = author;
+	public void update(Integer updaterId) {
+		LocalDateTime nowDate = LocalDateTime.now();
+		updateAt = nowDate;
+		updateBy = updaterId;
+		versionNo++;
 	}
-
 }
