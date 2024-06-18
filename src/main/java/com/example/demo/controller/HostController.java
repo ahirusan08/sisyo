@@ -2,8 +2,11 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/host")
@@ -19,7 +22,7 @@ public class HostController {
 	}
 
 	@GetMapping("/rental")
-	public String renralSearch() {
+	public String rentalSearch() {
 		//本ID、利用者ID入力画面表示
 		
 
@@ -27,8 +30,11 @@ public class HostController {
 	}
 
 	@GetMapping("/rental/select")
-	public String renralSelect(
+	public String rentalSelect(
 			//リクエストパラメータ
+			Model model,
+			@RequestParam("bookId") Integer bookId,
+			@RequestParam("userId") Integer userId
 			) {
 		//本ID、利用者IDをもとにタイトル、利用者名を検索
 		//セッションスコープにsetAttributeで保存 キー名迷い中
@@ -39,8 +45,10 @@ public class HostController {
 	}	
 	
 	@GetMapping("/rental/process")
-	public String renralProcess(
+	public String rentalProcess(
 			//リクエストパラメータ
+			Model model,
+			@RequestParam("rental") Integer rental
 			) {
 		
 		return "rentalSelect";//G212貸出・返却選択
@@ -66,8 +74,11 @@ public class HostController {
 		return "addBook";//G221
 	}
 	
-	@GetMapping("add/book/done")
-	public String addBookDone() {
+	@PostMapping("add/book/done")
+	public String addBookDone(Model model,
+			@RequestParam("name") String name,
+			@RequestParam("email") String email
+			) {
 		//
 		return "doneAddBook";//G222
 	}
