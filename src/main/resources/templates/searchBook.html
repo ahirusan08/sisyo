@@ -9,41 +9,39 @@
 
 <body>
 	<h1>蔵書検索</h1>
+	<a href="">ホームへ</a>
 	<hr>
 	<!--BookController-->
-	<form action="">
+	<form action="/search" method="post">
 
-		<input type="month" name="month">
-		
+		<input type="month" name="ym" th:value="${ym}">
 		<input type="submit" value="検索">
 	</form>
 	<br>
 	
 	<table border="1">
 		<tr>
-			<th colspan="33">貸し出し状況</th>
+			<th th:colspan="${3+maxDay}">貸し出し状況</th>
 		</tr>
 		<tr>
 			<th>本ID</th>
 			<th>タイトル</th>
 			<th>著者名</th>
-			<th:block th:each="date:${#numbers.sequence(1,30)}">
-				<td>[[${date}]]</td><!--30日って打ってるだけ↑-->
+			<th:block th:each="date:${#numbers.sequence(1,maxDay)}">
+				<td>[[${date}]]</td>
 			</th:block>
 		</tr>
-		<tr>
-			<td>1</td>
-			<th>あいすの本</th>
-			<th>あいすはかせ</th>
-			<th:block th:each="date:${#numbers.sequence(1,30)}">
+		<tr th:each="book:${books}">
+			<td>[[${book.id}]]</td>
+			<td>[[${book.title}]]</td>
+			<td>[[${book.author}]]</td>
+			<th:block th:each="date:${#numbers.sequence(1,maxDay)}">
 				<td>　</td>
 			</th:block>
+			
 		</tr>
-
-		<tr>
-
-
-		</tr>
+		
+	
 
 
 	</table>

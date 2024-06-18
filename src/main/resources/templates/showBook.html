@@ -9,11 +9,12 @@
 
 <body>
 	<h1>蔵書一覧</h1>
+	<a href="">ログアウト</a>
 	<hr>
 	<!--BookController-->
-	<form action="">
-
-		<input type="month" name="month">
+	<form action="/search" method="post">
+		
+		<input type="month" name="ym">
 		<input type="submit" value="検索">
 	</form>
 	<br>
@@ -24,16 +25,10 @@
 			<th>タイトル</th>
 			<th>著者名</th>
 		</tr>
-		<tr>
-			<td>1</td>
-			<th>あいすの本</th>
-			<th>あいすはかせ</th>
-
-		</tr>
-
-		<tr>
-
-
+		<tr th:each="book:${books}">
+			<td>[[${book.id}]]</td>
+			<td>[[${book.title}]]</td>
+			<td>[[${book.author}]]</td>
 		</tr>
 
 
