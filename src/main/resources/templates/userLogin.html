@@ -8,19 +8,22 @@
 <body>
 <h1>利用者ログイン</h1>
 <hr>
-<form action="/user/login">
+
+	<div th:text="${error}" style="color: red"></div>
+
+<form action="/user/login" method="post">
 	<!--UserAccountControllerへ -->
 	<table border="1">
 		<tr>
 			<th>メールアドレス</th>
 			<td>
-				<input type="text" name="email">
+				<input type="text" name="email" maxlength="32">
 			</td>
 		</tr>
 		<tr>
 			<th>パスワード</th>
 			<td>
-				<input type="text" name="password">
+				<input type="text" name="password" maxlength="16">
 			</td>
 		</tr>
 		

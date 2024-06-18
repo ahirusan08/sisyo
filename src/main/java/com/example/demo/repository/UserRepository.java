@@ -11,5 +11,7 @@ import com.example.demo.entity.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
 	public abstract Optional<User> findByEmailAndPassword(String email, String password);
+	
+	public abstract Optional<User> findByEmail(String email);
 
 }

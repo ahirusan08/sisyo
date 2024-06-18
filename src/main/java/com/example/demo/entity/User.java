@@ -25,18 +25,22 @@ public class User {
 	private String email;
 	private String password;
 
+//	@CreatedDate
 	@Column(name = "created_at")
 	private LocalDateTime createdAt;
 
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "created_by")
 	private Integer createdBy;
 
+//	@LastModifiedDate
 	@Column(name = "update_at")
 	private LocalDateTime updateAt;
 
 	@Column(name = "update_by")
 	private Integer updateBy;
 
+//	@Version
 	@Column(name = "version_no")
 	private Integer versionNo;
 
@@ -60,11 +64,21 @@ public class User {
 		this.password = password;
 		create();
 	}
+	
+//	public User(Integer id, String name, String email, String password) {
+//		this.id = id;
+//		this.name = name;
+//		this.email = email;
+//		this.password = password;
+//		create();
+//	}
 
 	private void create() {
 		LocalDateTime nowDate = LocalDateTime.now();
+		//System.out.println("id:" + id);
 		createdAt = nowDate;
 		createdBy = id;//Userの作成者はUser本人
+//		createdBy = 1;
 		versionNo = 1;
 		deleteFlag = 0;
 	}
