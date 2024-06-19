@@ -23,7 +23,7 @@ public interface RentalRepository extends JpaRepository<Rental, Integer> {
 
 	public abstract Optional<Rental> findBylimitDateAndUserId(LocalDate limitDate, Integer userId);
 
-	public abstract List<Rental> findByReturnDateIsNullAndLimitDateLessThan(LocalDateTime today);
+	public abstract List<Rental> findByReturnDateIsNullAndVersionNoLessThanAndLimitDateLessThan(Integer no, LocalDateTime today);
 
 	@Query(value = "SELECT * FROM rentals "
 			+ "WHERE rental_date::TEXT LIKE ?1 "

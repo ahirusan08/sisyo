@@ -20,23 +20,28 @@ public class Checker {
 	@Autowired
 	RentalRepository rentalrepository;
 
-//	Rental rental;
+	//	Rental rental;
 
 	@Before("execution(* com.example.demo.controller.UserAccountController.index(..))")
 	public void returnBook(JoinPoint jp) {
 
 		LocalDateTime today = LocalDateTime.now();
-		
-		List<Rental> list = rentalrepository.findByReturnDateIsNullAndLimitDateLessThan(today);
-		
-		
+
+		List<Rental> list = rentalrepository.findByReturnDateIsNullAndVersionNoLessThanAndLimitDateLessThan(2, today);
+
 		for (Rental rental : list) {
-			
+
 			LocalDateTime limit = rental.getLimitDate();
 			rental.setReturnDate(limit);
-			
+
+			Integer vnum = rental.getVersionNo();
+
+			if (vnum == 1) {
+				rental.setVersionNo(2);
+			}
+
 			rentalrepository.saveAndFlush(rental);
-			
+
 		}
 
 	}
