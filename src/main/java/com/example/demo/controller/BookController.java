@@ -81,9 +81,9 @@ public class BookController {
 			for (int j = 0; j < 31; j++) {//すべての日程に対して
 				for (Rental r : rentals) {//rentalsに対して
 					
-					
+					//③-0	 まだ返却されていない場合
 					if(r.getReturnDate()==null) {
-						r.setReturnDate(r.getLimitDate());
+						r.setReturnDate(r.getLimitDate());//返却日に返却期限日を仮set
 					}
 					//③-1	 月を跨がない予約(貸出日と返却期限日が今月)
 					if (r.getRentalDate().getMonthValue() == month && r.getReturnDate().getMonthValue() == month) {
@@ -116,17 +116,6 @@ public class BookController {
 		
 		return "searchBook";
 		
-		//		//①貸出日または返却期限日がymであるものを検索
-		//		List<Rental> rentals = rentalRepository.rental(ym + "%", ym + "%");
-		//
-		//		//②未返却の本の返却日を、返却期限日で仮置きする
-		//		for (Rental rental : rentals) {
-		//			if (rental.getReturnDate() == null) {
-		//				rental.setReturnDate(rental.getLimitDate());
-		//			}
-		//		}
-		//		m.addAttribute("rentals", rentals);
-		//
 	}
 
 }

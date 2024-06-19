@@ -10,17 +10,38 @@
 
 <body>
 	<h1>蔵書一覧</h1>
-	<a href="">ログアウト</a>
+	<th:block th:if="${@hostAccount.id}">
+		<a href="/host/select" class="btn-stick">ホームへ</a>
+	</th:block>
+	<th:block th:if="${@userAccount.id}">
+		<a href="/user/index" class="btn-stick">ログアウト</a>
+	</th:block>
 	<hr>
 	<!--BookController-->
 	<form action="/search" method="post">
 		
 		<input type="month" name="ym">
-		<input type="submit" value="検索">
+		<button class="btn-stick">検索</button>
 	</form>
 	<br>
+	
+	<ul class="leaf">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
 
-	<table border="1">
+	<table border="1" class="c-commonTable2">
 		<tr>
 			<th>本ID</th>
 			<th>タイトル</th>
@@ -34,6 +55,8 @@
 
 
 	</table>
+	
+	
 
 </body>
 

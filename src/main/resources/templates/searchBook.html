@@ -10,18 +10,40 @@
 
 <body>
 	<h1>蔵書検索</h1>
-	<a href="">ホームへ</a>
+	<th:block th:if="${@hostAccount.id}">
+		<a href="/host/select" class="btn-stick">ホームへ</a>
+	</th:block>
+	<th:block th:if="${@userAccount.id}">
+		<a href="/user/index" class="btn-stick">ログアウト</a>
+	</th:block>
+	
 	
 	<hr>
 	<!--BookController-->
 	<form action="/search" method="post">
 
 		<input type="month" name="ym" th:value="${ym}">
-		<input type="submit" value="検索">
+		<button class="btn-stick">検索</button>
 	</form>
 	<br>
+	
+	<ul class="leaf">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
 
-	<table border="1">
+	<table border="1" class="c-commonTable2">
 		<tr>
 			<th th:colspan="${3+maxDay}">貸し出し状況</th>
 		</tr>
@@ -59,7 +81,7 @@
 
 
 	</table>
-	[[${rentals[1][1]}]]
+	
 
 </body>
 
