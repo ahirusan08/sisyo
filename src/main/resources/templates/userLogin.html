@@ -10,13 +10,15 @@
 
 <body>
 	<h1>利用者ログイン</h1>
+	<br>
 	<hr>
+	<br>
 
 	<div th:text="${error}" style="color: red"></div>
 
 	<form action="/user/login" method="post">
 		<!--UserAccountControllerへ -->
-		<table border="1">
+		<table border="1" class="c-commonTable2">
 			<tr>
 				<th>メールアドレス</th>
 				<td>
@@ -31,7 +33,8 @@
 			</tr>
 
 		</table>
-		<button>ログイン</button>
+		<br>
+		<button class="btn-sticky">ログイン</button>
 	</form>
 	<br>
 	<a href="/user/add/form">新規利用者登録</a>
