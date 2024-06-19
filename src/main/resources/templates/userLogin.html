@@ -1,37 +1,56 @@
 <!--作成者：菊水-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>利用者ログイン</title>
-<link href="/contact.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title>利用者ログイン</title>
+	<link href="/contact.css" rel="stylesheet">
 </head>
+
 <body>
-<h1>利用者ログイン</h1>
-<hr>
+	<h1>利用者ログイン</h1>
+	<hr>
 
 	<div th:text="${error}" style="color: red"></div>
 
-<form action="/user/login" method="post">
-	<!--UserAccountControllerへ -->
-	<table border="1">
-		<tr>
-			<th>メールアドレス</th>
-			<td>
-				<input type="text" name="email" maxlength="32">
-			</td>
-		</tr>
-		<tr>
-			<th>パスワード</th>
-			<td>
-				<input type="text" name="password" maxlength="16">
-			</td>
-		</tr>
-		
-	</table>
-	<input type="submit" value="ログイン">
-</form>
-<br>
-<a href="/user/add/form">新規利用者登録</a>
+	<form action="/user/login" method="post">
+		<!--UserAccountControllerへ -->
+		<table border="1">
+			<tr>
+				<th>メールアドレス</th>
+				<td>
+					<input type="text" name="email" maxlength="32">
+				</td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td>
+					<input type="text" name="password" maxlength="16">
+				</td>
+			</tr>
+
+		</table>
+		<button>ログイン</button>
+	</form>
+	<br>
+	<a href="/user/add/form">新規利用者登録</a>
+
+	<ul class="leaf">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
 </body>
+
 </html>

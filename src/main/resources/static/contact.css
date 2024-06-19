@@ -1,20 +1,34 @@
 /* 全体 */
 body {
-	background-color: #EFF0F7; /* 背景色  */
-	text-align: center; /* 中央寄せ */
-    min-width: 900px; /* 最小幅 */
+	height: 250px;
+	margin: 30px 0;
+	text-align: center;
+	/* 中央寄せ */
+	min-width: 900px;
+	/* 最小幅 */
+	
 }
+
 /* ヘッダー、ナビゲーションメニュー、フッター */
-header, nav, footer {
-	background-color: #45496a; /* 背景色 */
-	color: #ffffff; /* 文字色 */
-	padding-top: 5px; /* 内側余白(上) */
-	padding-bottom: 5px; /* 内側余白(下) */
+header,
+nav,
+footer {
+	background-color: #45496a;
+	/* 背景色 */
+	color: #ffffff;
+	/* 文字色 */
+	padding-top: 5px;
+	/* 内側余白(上) */
+	padding-bottom: 5px;
+	/* 内側余白(下) */
 }
+
 /* ヘッダー、ナビゲーション内リンク */
-header a, nav a {
+header a,
+nav a {
 	color: #ffffff;
 }
+
 /* ヘッダー内見出し */
 header h1 {
 	font-size: 20pt;
@@ -22,30 +36,40 @@ header h1 {
 }
 
 /* 仕切り線 */
+
 hr {
-	border-top: 2px dashed #7d8bae;
+  height: 8px;
+  background-image: repeating-linear-gradient(45deg, #ccc 0, #ccc 1px, transparent 0, transparent 50%), repeating-linear-gradient(135deg, #ccc 0, #ccc 1px, transparent 0, transparent 50%);
+  background-size: 8px 8px;
 }
+
 /* メイン */
 main {
 	background-color: #FFFFFF;
 	min-height: 50px;
 	padding: 20px;
 }
+
 /* 表線 */
-table, th, td {
+table,
+th,
+td {
 	border-collapse: collapse;
 	border: 1px solid #7d8bae;
 }
+
 /* 表 */
 table {
-    margin: 5px auto;
-    min-width: 800px;
+	margin: 5px auto;
+	min-width: 800px;
 }
+
 /* 表見出しセル */
 table th {
 	background: #7d8bae;
 	color: #ffffff;
 }
+
 /* 送信ボタン */
 button {
 	margin: 2px;
@@ -53,10 +77,168 @@ button {
 	background-color: #e5857b;
 	color: #ffffff;
 	border: none;
-	width:150px;
+	width: 150px;
 	cursor: pointer;
 }
+
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
 	background-color: #f1b2b2;
+}
+
+html {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.leaf {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.leaf li{
+  position: absolute;
+  list-style: none;
+  top: -50px;
+  background: #47ff76;
+  border-radius: 0% 70%;
+}
+
+
+@keyframes fall {
+  to {
+    top: 120%;
+  }
+}
+
+@keyframes sway1 {
+  from {
+    transform: translateX(0px) rotate(0deg);
+  }
+  to {
+    transform: translateX(200px) rotate(-45deg);
+  }
+}
+
+@keyframes sway2 {
+  from {
+    transform: translateX(200px) rotate(-45deg);
+  }
+  to {
+    transform: translateX(0px) rotate(0deg);
+  }
+}
+
+.leaf li:nth-child(1){
+  left: 0%;
+  top: -60px;
+  width: 24px;
+  height: 15px;
+  background-color: #ffbf00;
+  animation: fall 10s linear infinite,
+             sway1 3s ease-in-out infinite alternate;
+  animation-delay: 2s;
+}
+
+.leaf li:nth-child(2){
+  left: 5%;
+  top: -70px;
+  width: 13px;
+  height: 9px;
+  background-color: #009926;
+  animation: fall 15s linear infinite,
+             sway1 2s ease-in-out infinite alternate;
+  animation-delay: 8s;
+}
+
+.leaf li:nth-child(3){
+  left: 15%;
+  top: -50px;
+  width: 16px;
+  height: 10px;
+  background-color: #c2704e;
+  animation: fall 9s linear infinite,
+             sway1 3.5s ease-in-out infinite alternate;
+  animation-delay: 13s;
+}
+
+.leaf li:nth-child(4){
+  left: 30%;
+  top: -70px;
+  width: 16px;
+  height: 10px;
+  background-color: #ffbf00;
+  animation: fall 8s linear infinite,
+             sway2 4s ease-in-out infinite alternate;
+  animation-delay: 7s;
+}
+.leaf li:nth-child(5){
+  left: 40%;
+  top: -60px;
+  width: 16px;
+  height: 10px;
+  animation: fall 10s linear infinite,
+             sway1 4s ease-in-out infinite alternate;
+  animation-delay: 0s;
+}
+.leaf li:nth-child(6){
+  left: 55%;
+  top: -50px;
+  width: 24px;
+  height: 15px;
+  background-color: #009926;
+  animation: fall 11s linear infinite,
+             sway2 3s ease-in-out infinite alternate;
+  animation-delay: 3s;
+}
+.leaf li:nth-child(7){
+  left: 65%;
+  top: -40px;
+  width: 16px;
+  height: 10px;
+  animation: fall 7s linear infinite,
+             sway2 3.5s ease-in-out infinite alternate;
+  animation-delay: 7s;
+}
+.leaf li:nth-child(8){
+  left: 50%;
+  top: -60px;
+  width: 13px;
+  height: 9px;
+  background-color: #c2704e;
+  animation: fall 7s linear infinite,
+             sway1 3s ease-in-out infinite alternate;
+  animation-delay: 3s;
+}
+.leaf li:nth-child(9){
+  left: 80%;
+  top: -70px;
+  width: 16px;
+  height: 10px;
+  animation: fall 10s linear infinite,
+             sway2 4s ease-in-out infinite alternate;
+  animation-delay: 4s;
+}
+
+.btn-sticky {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #f7f7f7;
+  border-left: solid 6px #ff7c5c;/*左線*/
+  color: #ff7c5c;/*文字色*/
+  font-weight: bold;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+}
+.btn-sticky:active {
+  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+  transform: translateY(2px);
 }
