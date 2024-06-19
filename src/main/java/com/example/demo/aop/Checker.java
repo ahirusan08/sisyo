@@ -13,12 +13,17 @@ import org.springframework.stereotype.Component;
 import com.example.demo.entity.Rental;
 import com.example.demo.repository.RentalRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Aspect
 @Component
 public class Checker {
 
 	@Autowired
 	RentalRepository rentalrepository;
+
+	@Autowired
+	HttpSession session;
 
 	//	Rental rental;
 
@@ -42,7 +47,15 @@ public class Checker {
 
 			rentalrepository.saveAndFlush(rental);
 
+			session.invalidate();
 		}
+
+	}
+
+	@Before("execution(* com.example.demo.controller.HostAccountController.index(..))")
+	public void trushCan(JoinPoint jp) {
+		
+		session.invalidate();
 
 	}
 }
