@@ -36,7 +36,19 @@
 			<td>[[${book.title}]]</td>
 			<td>[[${book.author}]]</td>
 			<th:block th:each="date:${#numbers.sequence(1,maxDay)}">
-				<td>　</td>
+				
+				<th:block th:each="rental:${rentals}">
+					
+					<th:block th:if="${rental.bookId==book.id}">
+						<th:block th:if="${rental.rentalDate}">
+							<td>
+								シークエンスと比較
+							</td>
+						</th>
+					</th:block>
+					
+				</th>
+			
 			</th:block>
 			
 		</tr>

@@ -11,16 +11,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Book;
+import com.example.demo.entity.Rental;
 import com.example.demo.repository.BookRepository;
+import com.example.demo.repository.RentalRepository;
 
 @Controller
 public class BookController {
 
 	//	@Autowired
 	//	private HttpSession session;
-
+	
 	@Autowired
 	BookRepository bookRepository;
+
+	@Autowired
+	RentalRepository rentalRepository;
 
 	@GetMapping("/show")
 	public String show(Model m) {
@@ -49,10 +54,54 @@ public class BookController {
 		m.addAttribute("maxDay", maxDay);
 		
 		//貸出状況表示
-		//List<Book> rentals=bookRepository.rental(ym+"%");
-		//List<Book> limits=bookRepository.limit(ym+"%");
+		
+		//①貸出日または返却期限日がymであるものを検索
+		List<Rental> rentals=rentalRepository.rental(ym+"%",ym+"%");
+		
+		
+		//②未返却の本の返却日を、返却期限日で仮置きする
+		for(Rental rental :rentals) {
+			if(rental.getReturnDate()==null) {
+				
+				rental.setReturnDate(rental.getLimitDate());
+				
+			}
+			
+		}
+		
+		
+		m.addAttribute("rentals", rentals);
 		
 		return "searchBook";
+	}
+	
+	@PostMapping("/test")
+	public String test(
+			@RequestParam(name = "ym", required = false) String ym,
+			Model m
+			) {
+		
+		//検索データ保持
+				m.addAttribute("ym", ym);
+				
+				
+				//その月は何日まで？
+				String day[]=ym.split("-");
+				LocalDate date = LocalDate.of(Integer.parseInt(day[0]), Integer.parseInt(day[1]), 1);
+				int maxDay = date.lengthOfMonth();
+				m.addAttribute("maxDay", maxDay);
+				
+				//貸出状況表示
+				
+				int start=2;
+				int fin=10;
+				for(int i=start;i<=fin;i++) {
+					
+				}
+				
+				
+		
+		return "test";
 	}
 
 }
