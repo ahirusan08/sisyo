@@ -11,6 +11,7 @@
 <body>
 	<h1>蔵書検索</h1>
 	<a href="">ホームへ</a>
+	
 	<hr>
 	<!--BookController-->
 	<form action="/search" method="post">
@@ -19,7 +20,7 @@
 		<input type="submit" value="検索">
 	</form>
 	<br>
-	
+
 	<table border="1">
 		<tr>
 			<th th:colspan="${3+maxDay}">貸し出し状況</th>
@@ -28,9 +29,9 @@
 			<th>本ID</th>
 			<th>タイトル</th>
 			<th>著者名</th>
-			<th:block th:each="date:${#numbers.sequence(1,maxDay)}">
-				<td >
-					[[${date}]]
+			<th:block th:each="day:${#numbers.sequence(1,maxDay)}">
+				<td>
+					[[${day}]]
 				</td>
 			</th:block>
 		</tr>
@@ -38,29 +39,27 @@
 			<td>[[${book.id}]]</td>
 			<td>[[${book.title}]]</td>
 			<td>[[${book.author}]]</td>
-			<th:block th:each="date:${#numbers.sequence(1,maxDay)}">
-				
-<!--				<th:block th:each="rental:${rentals}">-->
-					
-<!--					<th:block th:if="${rental.bookId==book.id}">-->
-<!--						<th:block th:if="${rental.rentalDate}">-->
-							<td>
-							
-				
-							</td>
-<!--					</th:block>-->
-<!--					</th:block>-->
-					
-<!--				</th:block>-->
 			
+			<th:block th:each="day,state:${#numbers.sequence(1,maxDay)}">
+				
+				<th:block th:if="${rentalBook[book.id -1][day -1]} eq 1">
+					<td width="30" align="center" style="background:#ff7c5c">
+					</td>
+				</th:block>
+				<th:block th:unless="${rentalBook[book.id -1][day -1]} eq 1">
+					<td width="30" align="center" style="background: white">
+					</td>
+				</th:block>
+				
 			</th:block>
-			
+
 		</tr>
-		
-	
+
+
 
 
 	</table>
+	[[${rentals[1][1]}]]
 
 </body>
 

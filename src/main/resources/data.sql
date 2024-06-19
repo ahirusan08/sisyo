@@ -37,5 +37,6 @@ INSERT INTO rentals(user_id, book_id, rental_date, limit_date, return_date,creat
 VALUES(1,5,'2024-6-16','2024-6-21',NULL, '2024-6-27 00:00:00.000000',1,NULL,NULL,1,0);
 INSERT INTO rentals(user_id, book_id, rental_date, limit_date, return_date,created_at,created_by,update_at,update_by,version_no,delete_flag) 
 VALUES(2,1,'2024-6-17','2024-6-22',NULL, '2024-6-27 00:00:00.000000',1,NULL,NULL,1,0);
-
+INSERT INTO rentals(user_id, book_id, rental_date, limit_date, return_date,created_at,created_by,update_at,update_by,version_no,delete_flag) 
+VALUES(3,3,'2024-5-30','2024-6-4','2024-6-4', '2024-6-27 00:00:00.000000',1,NULL,NULL,2,0);
 

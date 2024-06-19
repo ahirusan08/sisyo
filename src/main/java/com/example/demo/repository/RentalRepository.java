@@ -14,16 +14,17 @@ import com.example.demo.entity.Rental;
 @Repository
 public interface RentalRepository extends JpaRepository<Rental, Integer> {
 
-	public abstract Optional<Rental> findByBookIdAndUserId(Integer bookId, Integer userId);
+	List<Rental> findByBookId(Integer bookId);
 
-	public abstract Optional<Rental> findByBookIdAndUserIdAndVersionNo(Integer bookId, Integer userId,
-			Integer versionNo);
+	Optional<Rental> findByBookIdAndUserId(Integer bookId, Integer userId);
 
-	public abstract Optional<Rental> findByBookIdAndVersionNo(Integer bookId, Integer versionNo);
+	Optional<Rental> findByBookIdAndUserIdAndVersionNo(Integer bookId, Integer userId, Integer versionNo);
 
-	public abstract Optional<Rental> findBylimitDateAndUserId(LocalDate limitDate, Integer userId);
+	Optional<Rental> findByBookIdAndVersionNo(Integer bookId, Integer versionNo);
 
-	public abstract List<Rental> findByReturnDateIsNullAndVersionNoLessThanAndLimitDateLessThan(Integer no, LocalDateTime today);
+	Optional<Rental> findBylimitDateAndUserId(LocalDate limitDate, Integer userId);
+
+	List<Rental> findByReturnDateIsNullAndVersionNoLessThanAndLimitDateLessThan(Integer no, LocalDateTime today);
 
 	@Query(value = "SELECT * FROM rentals "
 			+ "WHERE rental_date::TEXT LIKE ?1 "
