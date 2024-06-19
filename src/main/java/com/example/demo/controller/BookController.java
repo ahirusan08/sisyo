@@ -75,33 +75,6 @@ public class BookController {
 		return "searchBook";
 	}
 	
-	@PostMapping("/test")
-	public String test(
-			@RequestParam(name = "ym", required = false) String ym,
-			Model m
-			) {
-		
-		//検索データ保持
-				m.addAttribute("ym", ym);
-				
-				
-				//その月は何日まで？
-				String day[]=ym.split("-");
-				LocalDate date = LocalDate.of(Integer.parseInt(day[0]), Integer.parseInt(day[1]), 1);
-				int maxDay = date.lengthOfMonth();
-				m.addAttribute("maxDay", maxDay);
-				
-				//貸出状況表示
-				
-				int start=2;
-				int fin=10;
-				for(int i=start;i<=fin;i++) {
-					
-				}
-				
-				
-		
-		return "test";
-	}
+	
 
 }

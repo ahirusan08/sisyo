@@ -5,6 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>蔵書検索</title>
+	<link href="/contact.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,7 +29,9 @@
 			<th>タイトル</th>
 			<th>著者名</th>
 			<th:block th:each="date:${#numbers.sequence(1,maxDay)}">
-				<td>[[${date}]]</td>
+				<td >
+					[[${date}]]
+				</td>
 			</th:block>
 		</tr>
 		<tr th:each="book:${books}">
@@ -37,17 +40,18 @@
 			<td>[[${book.author}]]</td>
 			<th:block th:each="date:${#numbers.sequence(1,maxDay)}">
 				
-				<th:block th:each="rental:${rentals}">
+<!--				<th:block th:each="rental:${rentals}">-->
 					
-					<th:block th:if="${rental.bookId==book.id}">
-						<th:block th:if="${rental.rentalDate}">
+<!--					<th:block th:if="${rental.bookId==book.id}">-->
+<!--						<th:block th:if="${rental.rentalDate}">-->
 							<td>
-								シークエンスと比較
+							
+				
 							</td>
-						</th>
-					</th:block>
+<!--					</th:block>-->
+<!--					</th:block>-->
 					
-				</th>
+<!--				</th:block>-->
 			
 			</th:block>
 			
