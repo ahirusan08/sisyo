@@ -18,7 +18,6 @@ public class HostAccount {
 	}
 
 	public HostAccount(Integer id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}

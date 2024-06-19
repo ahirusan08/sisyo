@@ -35,7 +35,7 @@ public class UserAccountController {
 	@GetMapping({ "/index", "/logout" })
 	public String index() {
 		//セッション破棄、強制返却処理AOP？
-		
+		//session.invalidate();
 		
 		return "userLogin";//G101利用者ログイン画面へ
 	}
