@@ -10,11 +10,14 @@
 
 <body>
 	<h1>貸出・返却選択</h1>
+	<br>
 	<hr>
+	<br>
+
 	<div>[[${error}]]</div>
-	
+
 	<form action="/host/rental/process">
-		<table border="1">
+		<table border="1" class="c-commonTable2">
 			<tr>
 				<th>タイトル</th>
 				<td>[[${session.book.title}]]</td>
@@ -27,23 +30,23 @@
 		<input type="radio" name="rental" value="1" checked>貸出　
 		<input type="radio" name="rental" value="0">返却
 		<br>
-		<button>決定</button>
-		</form>
-		
-		<ul class="leaf">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
+		<button class="btn-sticky">決定</button>
+	</form>
+
+	<ul class="leaf">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
 	</ul>
 
 </body>

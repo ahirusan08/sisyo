@@ -10,19 +10,21 @@
 
 <body>
 	<h1>管理者ログイン</h1>
+	<br>
 	<hr>
-	
-<!--	<span th:if="${error}">-->
-		[[${error}]]
-<!--</span>-->
+	<br>
+
+	<!--	<span th:if="${error}">-->
+	[[${error}]]
+	<!--</span>-->
 
 	<form action="/host/login" method="post">
 		<!--HostAccountControllerへ -->
-		<table border="1">
+		<table border="1" class="c-commonTable2">
 			<tr>
 				<th>管理者ID</th>
 				<td>
-					<input type="text" name="id" maxlength="16"> 
+					<input type="text" name="id" maxlength="16">
 				</td>
 			</tr>
 			<tr>
@@ -33,23 +35,24 @@
 			</tr>
 
 		</table>
-		<button>ログイン</button>
-		</form>
-		
-		<ul class="leaf">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
+		<br>
+		<button class="btn-sticky">ログイン</button>
+	</form>
+
+	<ul class="leaf">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
 	</ul>
 </body>
 

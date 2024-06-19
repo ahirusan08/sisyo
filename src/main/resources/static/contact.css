@@ -5,8 +5,9 @@ body {
 	text-align: center;
 	/* 中央寄せ */
 	min-width: 900px;
+	background-color: papayawhip;
 	/* 最小幅 */
-	
+
 }
 
 /* ヘッダー、ナビゲーションメニュー、フッター */
@@ -30,17 +31,31 @@ nav a {
 }
 
 /* ヘッダー内見出し */
-header h1 {
-	font-size: 20pt;
-	margin: 10px auto;
-}
+/*h1 {*/
+/*	color: #364e96;*/
+/*	文字色*/
+/*	border: solid 3px #ff7c5c;*/
+/*	線色*/
+/*	padding: 0.5em;*/
+/*	文字周りの余白*/
+/*	border-radius: 0.5em;*/
+/*	角丸*/
+/*	width: 10em;*/
+/*	margin: auto;*/
+/*}*/
 
+h1 {
+  background: #ffffff;
+  box-shadow: 0px 0px 0px 5px #ffffff;
+  border: dashed 2px #ff7c5c;
+  padding: 0.2em 0.5em;
+  width: 10em;
+  margin: auto;
+}
 /* 仕切り線 */
 
 hr {
-  height: 8px;
-  background-image: repeating-linear-gradient(45deg, #ccc 0, #ccc 1px, transparent 0, transparent 50%), repeating-linear-gradient(135deg, #ccc 0, #ccc 1px, transparent 0, transparent 50%);
-  background-size: 8px 8px;
+	border-top: 2px dashed#ff7c5c;
 }
 
 /* メイン */
@@ -51,23 +66,37 @@ main {
 }
 
 /* 表線 */
-table,
-th,
-td {
+.c-commonTable2 {
 	border-collapse: collapse;
-	border: 1px solid #7d8bae;
+	width: 50%;
+	margin: auto;
 }
 
-/* 表 */
-table {
-	margin: 5px auto;
-	min-width: 800px;
+.c-commonTable2 th,
+.c-commonTable2 td {
+	border: 2px solid #fff;
+	background-color: #f6f6f6;
+	padding: 10px;
 }
 
-/* 表見出しセル */
-table th {
-	background: #7d8bae;
-	color: #ffffff;
+.c-commonTable2 th {
+	background-color: #ff7c5c;
+	color: #fff;
+	text-align: center;
+	width: 25%;
+	min-width: 100px;
+	position: relative;
+}
+
+.c-commonTable2 th::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	transform: translateY(-50%);
+	border: 12px solid transparent;
+	border-left: 12px solid #ff7c5c;
+
 }
 
 /* 送信ボタン */
@@ -87,158 +116,192 @@ button:hover {
 }
 
 html {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
 }
 
 .leaf {
-  position: absolute;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 
-.leaf li{
-  position: absolute;
-  list-style: none;
-  top: -50px;
-  background: #47ff76;
-  border-radius: 0% 70%;
+.leaf li {
+	position: absolute;
+	list-style: none;
+	top: -50px;
+	background: #47ff76;
+	border-radius: 0% 70%;
 }
 
 
 @keyframes fall {
-  to {
-    top: 120%;
-  }
+	to {
+		top: 120%;
+	}
 }
 
 @keyframes sway1 {
-  from {
-    transform: translateX(0px) rotate(0deg);
-  }
-  to {
-    transform: translateX(200px) rotate(-45deg);
-  }
+	from {
+		transform: translateX(0px) rotate(0deg);
+	}
+
+	to {
+		transform: translateX(200px) rotate(-45deg);
+	}
 }
 
 @keyframes sway2 {
-  from {
-    transform: translateX(200px) rotate(-45deg);
-  }
-  to {
-    transform: translateX(0px) rotate(0deg);
-  }
+	from {
+		transform: translateX(200px) rotate(-45deg);
+	}
+
+	to {
+		transform: translateX(0px) rotate(0deg);
+	}
 }
 
-.leaf li:nth-child(1){
-  left: 0%;
-  top: -60px;
-  width: 24px;
-  height: 15px;
-  background-color: #ffbf00;
-  animation: fall 10s linear infinite,
-             sway1 3s ease-in-out infinite alternate;
-  animation-delay: 2s;
+.leaf li:nth-child(1) {
+	left: 0%;
+	top: -60px;
+	width: 24px;
+	height: 15px;
+	background-color: #ffbf00;
+	animation: fall 10s linear infinite,
+		sway1 3s ease-in-out infinite alternate;
+	animation-delay: 2s;
 }
 
-.leaf li:nth-child(2){
-  left: 5%;
-  top: -70px;
-  width: 13px;
-  height: 9px;
-  background-color: #009926;
-  animation: fall 15s linear infinite,
-             sway1 2s ease-in-out infinite alternate;
-  animation-delay: 8s;
+.leaf li:nth-child(2) {
+	left: 5%;
+	top: -70px;
+	width: 13px;
+	height: 9px;
+	background-color: #009926;
+	animation: fall 15s linear infinite,
+		sway1 2s ease-in-out infinite alternate;
+	animation-delay: 8s;
 }
 
-.leaf li:nth-child(3){
-  left: 15%;
-  top: -50px;
-  width: 16px;
-  height: 10px;
-  background-color: #c2704e;
-  animation: fall 9s linear infinite,
-             sway1 3.5s ease-in-out infinite alternate;
-  animation-delay: 13s;
+.leaf li:nth-child(3) {
+	left: 15%;
+	top: -50px;
+	width: 16px;
+	height: 10px;
+	background-color: #c2704e;
+	animation: fall 9s linear infinite,
+		sway1 3.5s ease-in-out infinite alternate;
+	animation-delay: 13s;
 }
 
-.leaf li:nth-child(4){
-  left: 30%;
-  top: -70px;
-  width: 16px;
-  height: 10px;
-  background-color: #ffbf00;
-  animation: fall 8s linear infinite,
-             sway2 4s ease-in-out infinite alternate;
-  animation-delay: 7s;
+.leaf li:nth-child(4) {
+	left: 30%;
+	top: -70px;
+	width: 16px;
+	height: 10px;
+	background-color: #ffbf00;
+	animation: fall 8s linear infinite,
+		sway2 4s ease-in-out infinite alternate;
+	animation-delay: 7s;
 }
-.leaf li:nth-child(5){
-  left: 40%;
-  top: -60px;
-  width: 16px;
-  height: 10px;
-  animation: fall 10s linear infinite,
-             sway1 4s ease-in-out infinite alternate;
-  animation-delay: 0s;
+
+.leaf li:nth-child(5) {
+	left: 40%;
+	top: -60px;
+	width: 16px;
+	height: 10px;
+	animation: fall 10s linear infinite,
+		sway1 4s ease-in-out infinite alternate;
+	animation-delay: 0s;
 }
-.leaf li:nth-child(6){
-  left: 55%;
-  top: -50px;
-  width: 24px;
-  height: 15px;
-  background-color: #009926;
-  animation: fall 11s linear infinite,
-             sway2 3s ease-in-out infinite alternate;
-  animation-delay: 3s;
+
+.leaf li:nth-child(6) {
+	left: 55%;
+	top: -50px;
+	width: 24px;
+	height: 15px;
+	background-color: #009926;
+	animation: fall 11s linear infinite,
+		sway2 3s ease-in-out infinite alternate;
+	animation-delay: 3s;
 }
-.leaf li:nth-child(7){
-  left: 65%;
-  top: -40px;
-  width: 16px;
-  height: 10px;
-  animation: fall 7s linear infinite,
-             sway2 3.5s ease-in-out infinite alternate;
-  animation-delay: 7s;
+
+.leaf li:nth-child(7) {
+	left: 65%;
+	top: -40px;
+	width: 16px;
+	height: 10px;
+	animation: fall 7s linear infinite,
+		sway2 3.5s ease-in-out infinite alternate;
+	animation-delay: 7s;
 }
-.leaf li:nth-child(8){
-  left: 50%;
-  top: -60px;
-  width: 13px;
-  height: 9px;
-  background-color: #c2704e;
-  animation: fall 7s linear infinite,
-             sway1 3s ease-in-out infinite alternate;
-  animation-delay: 3s;
+
+.leaf li:nth-child(8) {
+	left: 50%;
+	top: -60px;
+	width: 13px;
+	height: 9px;
+	background-color: #c2704e;
+	animation: fall 7s linear infinite,
+		sway1 3s ease-in-out infinite alternate;
+	animation-delay: 3s;
 }
-.leaf li:nth-child(9){
-  left: 80%;
-  top: -70px;
-  width: 16px;
-  height: 10px;
-  animation: fall 10s linear infinite,
-             sway2 4s ease-in-out infinite alternate;
-  animation-delay: 4s;
+
+.leaf li:nth-child(9) {
+	left: 80%;
+	top: -70px;
+	width: 16px;
+	height: 10px;
+	animation: fall 10s linear infinite,
+		sway2 4s ease-in-out infinite alternate;
+	animation-delay: 4s;
 }
 
 .btn-sticky {
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  background: #f7f7f7;
-  border-left: solid 6px #ff7c5c;/*左線*/
-  color: #ff7c5c;/*文字色*/
-  font-weight: bold;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+	display: inline-block;
+	padding: 0.5em 1em;
+	text-decoration: none;
+	background: #f7f7f7;
+	border-left: solid 6px #ff7c5c;
+	/*左線*/
+	color: #ff7c5c;
+	/*文字色*/
+	font-weight: bold;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+	
 }
+
 .btn-sticky:active {
-  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
-  transform: translateY(2px);
+	box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+	transform: translateY(2px);
+	
+}
+
+.btn-stick {
+	display: inline-block;
+	padding: 0.5em 1em;
+	text-decoration: none;
+	background: #f7f7f7;
+	border-left: solid 6px #ff7c5c;
+	/*左線*/
+	color: #ff7c5c;
+	/*文字色*/
+	font-weight: bold;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+	margin-left: 1em;
+	margin-right: 1em;
+	
+}
+
+.btn-stick:active {
+	box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+	transform: translateY(2px);
+	
 }

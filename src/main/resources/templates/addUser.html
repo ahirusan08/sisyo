@@ -10,12 +10,14 @@
 
 <body>
 	<h1>新規利用者登録</h1>
+	<br>
 	<hr>
-	
+	<br>
+
 	<div th:text="${error}" style="color: red"></div>
-		
+
 	<form action="/user/add/check" method="post">
-		<table border="1">
+		<table border="1" class="c-commonTable2">
 			<tr>
 				<th>名前</th>
 				<td>
@@ -36,23 +38,24 @@
 			</tr>
 
 		</table>
-		<button>確認</button>
-		</form>
-		
-		<ul class="leaf">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
+		<br>
+		<button class="btn-sticky">確認</button>
+	</form>
+
+	<ul class="leaf">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
 	</ul>
 
 </body>

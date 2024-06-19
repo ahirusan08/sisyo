@@ -10,7 +10,9 @@
 
 <body>
 	<h1>内容確認</h1>
+	<br>
 	<hr>
+	<br>
 	<form action="/user/add/done" method="post">
 		<input type="hidden" name="name" th:value="${name}">
 		<!--								↑[[${name}]] を入れる。
@@ -19,7 +21,7 @@
 		<input type="hidden" name="email" th:value="${email}">
 		<input type="hidden" name="password" th:value="${password}">
 
-		<table border="1">
+		<table border="1" class="c-commonTable2">
 			<tr>
 				<th>名前</th>
 				<td>
@@ -34,24 +36,25 @@
 			</tr>
 
 		</table>
-		この内容で登録しますか？
-		<button>登録</button>
-		</form>
-		
-		<ul class="leaf">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
+		<br>
+		この内容で登録しますか？<br>
+		<button class="btn-sticky">登録</button>
+	</form>
+
+	<ul class="leaf">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
 	</ul>
 
 </body>
