@@ -36,10 +36,12 @@ public class UserAccountController {
 		//セッション破棄、強制返却処理AOP？
 		session.invalidate();
 
+		System.out.println("START");
+
 		return "userLogin";//G101利用者ログイン画面へ
 	}
 
-	@RequestMapping(value="/login", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(
 			@RequestParam(name = "email", required = false) String email,
 			@RequestParam(name = "password", required = false) String password,
@@ -85,12 +87,13 @@ public class UserAccountController {
 
 	@GetMapping("/add/form")
 	public String addForm() {//完成！！！
-		System.out.println("YYY222");
+		
+		System.out.println("CCC");
 
 		return "addUser";//G111利用者登録画面へ
 	}
 
-	@RequestMapping(value="/add/check", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/add/check", method = { RequestMethod.GET, RequestMethod.POST })
 	public String addCheck(
 			@RequestParam(name = "name", required = false) String name,
 			@RequestParam(name = "email", required = false) String email,
@@ -127,7 +130,7 @@ public class UserAccountController {
 		return "checkAddUser";//G112内容確認画面へ
 	}
 
-	@RequestMapping(value="/add/done", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/add/done", method = { RequestMethod.GET, RequestMethod.POST })
 	public String addUser(
 			@RequestParam(name = "name", required = false) String name,
 			@RequestParam(name = "email", required = false) String email,

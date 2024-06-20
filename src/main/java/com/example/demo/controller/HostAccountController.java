@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Host;
@@ -38,7 +38,7 @@ public class HostAccountController {
 		return "hostLogin";
 	}
 
-	@RequestMapping(value="/login", method={RequestMethod.GET, RequestMethod.POST})
+	@PostMapping("/login")
 	public String login(
 			@RequestParam(name = "id", required = false) Integer id,
 			@RequestParam(name = "password", required = false) String password,
@@ -64,7 +64,7 @@ public class HostAccountController {
 		haccount.setName(host.getName());
 		haccount.setId(host.getId());
 		
-		return "select";//G202機能選択画面へ
+		return "select";//G202
 
 	}
 }

@@ -37,7 +37,7 @@ public class Checker {
 
 	//	Rental rental;
 
-	@Before("execution(* com.example.demo.controller.UserAccountController.index(..))")
+	@Before("execution(* com.example.demo.controller.*AccountController.index(..))")
 	public void returnBook(JoinPoint jp) {
 
 		LocalDateTime today = LocalDateTime.now();
@@ -57,61 +57,63 @@ public class Checker {
 
 			rentalrepository.saveAndFlush(rental);
 
-			session.invalidate();
 		}
 
 	}
 
-	@Before("execution(* com.example.demo.controller.HostAccountController.index(..))")
-	public void trushCan(JoinPoint jp) {
+	//	@Before("execution(* com.example.demo.controller.HostAccountController.index(..))")
+	//	public void trushCan(JoinPoint jp) {
+	//
+	//		//session.invalidate();
+	//		Integer id = useraccount.getId();
+	//		String name = useraccount.getName();
+	//
+	//		System.out.println("id:" + id);
+	//		System.out.println("name:" + name);
+	//
+	//	}
 
-		//session.invalidate();
-		Integer id = useraccount.getId();
-		String name = useraccount.getName();
-
-		System.out.println("id:" + id);
-		System.out.println("name:" + name);
-
-	}
-
-	@Around("execution(!* com.example.demo.controller.UserAccountController.index(..)) || "
-			+ "within(com.example.demo.controller.BookController)"
-	)
+	@Around("within(com.example.demo.controller.BookController)")
 	public Object UsercheckLogin(ProceedingJoinPoint jp) throws Throwable {
 
 		Object result = jp.proceed();
 		Integer id = useraccount.getId();
 		String name = useraccount.getName();
 
-		System.out.println("id:" + id);
-		System.out.println("name:" + name);
+		Integer hid = hostaccount.getId();
+		String hname = hostaccount.getName();
 
-		if (id == null || name == null) {
-			System.out.println("ZZZ111");
-			result = "redirect:/user/index";
+		//		if (id == null || name == null) {
+		//		
+		//			result = "redirect:/user/index";
+		//		}
+
+		if ((id != null && name != null) || (hid != null && hname != null)) {
+			return result;
 		}
 
+		result = "redirect:/user/index";
 		return result;
 	}
 
-//	@Around("execution(!* com.example.demo.controller.HostAccountController.index(..)) || "
-//			+ "within(com.example.demo.controller.HostController) || "
-//			+ "within(com.example.demo.controller.UserAccountController) || "
-//			+ "within(com.example.demo.controller.BookController)")
-//	public Object HostcheckLogin(ProceedingJoinPoint jp) throws Throwable {
-//
-//		Object result = jp.proceed();
-//		Integer id = hostaccount.getId();
-//		String name = hostaccount.getName();
-//
-//		System.out.println("id:" + id);
-//		System.out.println("name:" + name);
-//
-//		if (id == null || name == null) {
-//			System.out.println("ZZZ222");
-//			result = "redirect:/host/account/index";
-//		}
-//
-//		return result;
-//	}
+	//	@Around("execution(!* com.example.demo.controller.HostAccountController.index(..)) || "
+	//			+ "within(com.example.demo.controller.HostController) || "
+	//			+ "within(com.example.demo.controller.UserAccountController) || "
+	//			+ "within(com.example.demo.controller.BookController)")
+	//	public Object HostcheckLogin(ProceedingJoinPoint jp) throws Throwable {
+	//
+	//		Object result = jp.proceed();
+	//		Integer id = hostaccount.getId();
+	//		String name = hostaccount.getName();
+	//
+	//		System.out.println("id:" + id);
+	//		System.out.println("name:" + name);
+	//
+	//		if (id == null || name == null) {
+	//			System.out.println("ZZZ222");
+	//			result = "redirect:/host/account/index";
+	//		}
+	//
+	//		return result;
+	//	}
 }
