@@ -10,13 +10,16 @@
 
 <body>
 	<h1>蔵書一覧</h1>
+	<br>
 	<th:block th:if="${@hostAccount.id}">
 		<a href="/host/select" class="btn-stick">ホームへ</a>
 	</th:block>
 	<th:block th:if="${@userAccount.id}">
 		<a href="/user/index" class="btn-stick">ログアウト</a>
 	</th:block>
+	<br>
 	<hr>
+	<br>
 	<!--BookController-->
 	<form action="/search" method="post">
 		
