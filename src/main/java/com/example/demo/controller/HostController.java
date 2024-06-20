@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Book;
@@ -59,7 +59,7 @@ public class HostController {
 		return "rentalSearch";//G211貸出返却
 	}
 
-	@PostMapping("/rental/select")
+	@RequestMapping(value="/rental/select", method={RequestMethod.GET, RequestMethod.POST})
 	public String rentalSelect(
 			//リクエストパラメータ
 			Model model,
@@ -181,7 +181,7 @@ public class HostController {
 		return "addBook";//G221
 	}
 
-	@PostMapping("add/book/done")
+	@RequestMapping(value="add/book/done", method={RequestMethod.GET, RequestMethod.POST})
 	public String addBookDone(Model model,
 			@RequestParam(name = "title", required = false) String title,
 			@RequestParam(name = "author", required = false) String author) {

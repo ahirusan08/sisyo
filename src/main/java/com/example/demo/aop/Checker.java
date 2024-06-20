@@ -65,22 +65,53 @@ public class Checker {
 	@Before("execution(* com.example.demo.controller.HostAccountController.index(..))")
 	public void trushCan(JoinPoint jp) {
 
-		session.invalidate();
+		//session.invalidate();
+		Integer id = useraccount.getId();
+		String name = useraccount.getName();
+
+		System.out.println("id:" + id);
+		System.out.println("name:" + name);
 
 	}
 
-	@Around("execution(* com.example.demo.controller.UserAccountController.login(..)) ||"
-			+ "execution(* com.example.demo.controller.UserAccountController.addForm(..))")
-	public Object checkLogin(ProceedingJoinPoint jp) throws Throwable {
+	@Around("execution(!* com.example.demo.controller.UserAccountController.index(..)) || "
+			+ "within(com.example.demo.controller.BookController)"
+	)
+	public Object UsercheckLogin(ProceedingJoinPoint jp) throws Throwable {
 
 		Object result = jp.proceed();
 		Integer id = useraccount.getId();
 		String name = useraccount.getName();
 
-		if (id == null || name.isEmpty()) {
-			result = "redirect:/user/index";
+		System.out.println("id:" + id);
+		System.out.println("name:" + name);
 
+		if (id == null || name == null) {
+			System.out.println("ZZZ111");
+			result = "redirect:/user/index";
 		}
+
 		return result;
 	}
+
+//	@Around("execution(!* com.example.demo.controller.HostAccountController.index(..)) || "
+//			+ "within(com.example.demo.controller.HostController) || "
+//			+ "within(com.example.demo.controller.UserAccountController) || "
+//			+ "within(com.example.demo.controller.BookController)")
+//	public Object HostcheckLogin(ProceedingJoinPoint jp) throws Throwable {
+//
+//		Object result = jp.proceed();
+//		Integer id = hostaccount.getId();
+//		String name = hostaccount.getName();
+//
+//		System.out.println("id:" + id);
+//		System.out.println("name:" + name);
+//
+//		if (id == null || name == null) {
+//			System.out.println("ZZZ222");
+//			result = "redirect:/host/account/index";
+//		}
+//
+//		return result;
+//	}
 }
