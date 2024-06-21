@@ -11,6 +11,8 @@
 <body>
 	<h1>利用者ログイン</h1>
 	<br>
+	さぁ、あなたの借りたい本があるのか、借りることが出来るのか確かめてみましょう！
+	<br>
 	<hr>
 	<br>
 
@@ -37,7 +39,7 @@
 		<button class="btn-sticky">ログイン</button>
 	</form>
 	<br>
-	<a href="/user/add/form">新規利用者登録</a>
+	<a href="/user/add/form" id="new1">新規利用者登録</a>
 
 	<ul class="leaf">
 		<li></li>
@@ -53,7 +55,25 @@
 		<li></li>
 		<li></li>
 		<li></li>
+		
 	</ul>
+	<p><img src="/toshokan_benkyou.png" alt="図書館" id="lib">
+	</p>
+	
+	<script>
+		let login =document.querySelector(".btn-sticky");
+		let new1 =document.querySelector("#new1");
+		let lib =document.querySelector("#lib");
+		
+		function changeImg(filmename){
+			lib.src = filmename;
+		}
+		
+		login.addEventListener("mouseover",function(){changeImg("/school_toshokan_hondana.png");});
+		login.addEventListener("mouseout",function(){changeImg("/toshokan_benkyou.png");});
+		new1.addEventListener("mouseover",function(){changeImg("/green_card_eijuken.png");});
+		new1.addEventListener("mouseout",function(){changeImg("/toshokan_benkyou.png");});
+	</script>
 </body>
 
 </html>

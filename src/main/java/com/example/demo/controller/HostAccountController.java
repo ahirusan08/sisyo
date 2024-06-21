@@ -57,7 +57,7 @@ public class HostAccountController {
 		}
 
 		if (host == null) {
-			m.addAttribute("error", "ログインできません");
+			m.addAttribute("error", "管理者IDまたはパスワードが一致していません");
 			return "hostLogin";
 		}
 

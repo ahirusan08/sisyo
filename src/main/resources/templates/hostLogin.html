@@ -15,7 +15,7 @@
 	<br>
 
 	<!--	<span th:if="${error}">-->
-	[[${error}]]
+	<div>[[${error}]]</div>
 	<!--</span>-->
 
 	<form action="/host/login" method="post">
@@ -30,7 +30,7 @@
 			<tr>
 				<th>パスワード</th>
 				<td>
-					<input type="text" name="password">
+					<input type="text" name="password" maxlength="16">
 				</td>
 			</tr>
 
@@ -54,6 +54,20 @@
 		<li></li>
 		<li></li>
 	</ul>
+	<p><img src="/toshokan_benkyou.png" alt="図書館" id="usa">
+	</p>
+	
+	<script>
+		let login =document.querySelector(".btn-sticky");
+		let lib =document.querySelector("#usa");
+		
+		function changeImg(filmename){
+			lib.src = filmename;
+		}
+		
+		login.addEventListener("mouseover",function(){changeImg("/tosyokan_syokuin.png");});
+		login.addEventListener("mouseout",function(){changeImg("/toshokan_benkyou.png");});
+	</script>
 </body>
 
 </html>
