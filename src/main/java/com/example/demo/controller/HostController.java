@@ -125,7 +125,7 @@ public class HostController {
 		Book book = (Book) session.getAttribute("book");
 		Integer userId = (Integer) session.getAttribute("userId");
 
-		Optional<Rental> record = rentalRepository.findByBookIdAndUserIdAndVersionNo(book.getId(), userId, 1);
+		Optional<Rental> record = rentalRepository.findByBookIdAndVersionNo(book.getId(), 1);
 		if (record.isPresent()) {
 			String error = "この本は既に貸出されています";
 			model.addAttribute("error", error);
