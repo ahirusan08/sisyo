@@ -24,13 +24,17 @@
 			<tr>
 				<th>管理者ID</th>
 				<td>
-					<input type="number" name="id" maxlength="9">
+					<input type="number" name="id"
+						oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+						maxlength="9"><br>
 				</td>
 			</tr>
 			<tr>
 				<th>パスワード</th>
 				<td>
-					<input type="text" name="password" maxlength="16">
+					<input type="text" name="password"
+						oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+						maxlength="9"><br>
 				</td>
 			</tr>
 
@@ -56,17 +60,17 @@
 	</ul>
 	<p><img src="/toshokan_benkyou.png" alt="図書館" id="usa">
 	</p>
-	
+
 	<script>
-		let login =document.querySelector(".btn-sticky");
-		let lib =document.querySelector("#usa");
-		
-		function changeImg(filmename){
+		let login = document.querySelector(".btn-sticky");
+		let lib = document.querySelector("#usa");
+
+		function changeImg(filmename) {
 			lib.src = filmename;
 		}
-		
-		login.addEventListener("mouseover",function(){changeImg("/tosyokan_syokuin.png");});
-		login.addEventListener("mouseout",function(){changeImg("/toshokan_benkyou.png");});
+
+		login.addEventListener("mouseover", function () {changeImg("/tosyokan_syokuin.png");});
+		login.addEventListener("mouseout", function () {changeImg("/toshokan_benkyou.png");});
 	</script>
 </body>
 
