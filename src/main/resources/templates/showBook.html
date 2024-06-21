@@ -28,6 +28,23 @@
 	</form>
 	<br>
 	
+<div class="table_box">
+	<table border="1">
+		<tr>
+			<th class="sticky_cross">本ID</th>
+			<th class="sticky_cross">タイトル</th>
+			<th class="sticky_cross">著者名</th>
+		</tr>
+		<tr th:each="book:${books}">
+			<td>[[${book.id}]]</td>
+			<td>[[${book.title}]]</td>
+			<td>[[${book.author}]]</td>
+		</tr>
+
+
+	</table>
+</div>	
+	
 	<ul class="leaf">
 		<li></li>
 		<li></li>
@@ -43,23 +60,6 @@
 		<li></li>
 		<li></li>
 	</ul>
-
-	<table border="1" class="c-commonTable2">
-		<tr>
-			<th>本ID</th>
-			<th>タイトル</th>
-			<th>著者名</th>
-		</tr>
-		<tr th:each="book:${books}">
-			<td>[[${book.id}]]</td>
-			<td>[[${book.title}]]</td>
-			<td>[[${book.author}]]</td>
-		</tr>
-
-
-	</table>
-	
-	
 
 </body>
 
