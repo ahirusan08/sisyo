@@ -37,6 +37,8 @@ public class UserAccountController {
 		session.invalidate();
 
 		System.out.println("START");
+		System.out.println("Uid:"+userAccount.getId());
+		System.out.println("Uname:"+userAccount.getName());
 
 		return "userLogin";//G101利用者ログイン画面へ
 	}
@@ -60,23 +62,17 @@ public class UserAccountController {
 		//菊：不一致エラー
 		Optional<User> record = userRepository.findByEmailAndPassword(email, password);
 
-		//		if (record.isEmpty()) {
-		//			m.addAttribute("error", "メールアドレスまたはパスワードが一致していません");
-		//			return "userLogin";
-		//		}
-		//		
-		//		//正常時
-		//		//UserAccountクラスに名前をセット(セッション管理)
-		//		user = record.get();
-		//		String name = user.getName();
-		//		userAccount.setName(name);
-
+		
 		if (record.isPresent()) {
 			//正常時
 			//UserAccountクラスに名前をセット(セッション管理)
 			user = record.get();
 			userAccount.setName(user.getName());
 			userAccount.setId(user.getId());
+			
+			System.out.println("Uid:"+userAccount.getId());
+			System.out.println("Uname:"+userAccount.getName());
+			
 		} else {
 			m.addAttribute("error", "メールアドレスまたはパスワードが一致していません");
 			return "userLogin";
@@ -88,8 +84,6 @@ public class UserAccountController {
 	@GetMapping("/add/form")
 	public String addForm() {//完成！！！
 		
-		System.out.println("CCC");
-
 		return "addUser";//G111利用者登録画面へ
 	}
 

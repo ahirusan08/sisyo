@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.model.HostAccount;
 
+import jakarta.servlet.http.HttpSession;
+
 @Aspect
 @Component
 public class HostChecker {
@@ -15,6 +17,9 @@ public class HostChecker {
 
 	@Autowired
 	HostAccount hostaccount;
+	
+	@Autowired
+	HttpSession session;
 
 //	@Around("execution(!* com.example.demo.controller.HostAccountController.index(..)) || "
 //			+ "within(com.example.demo.controller.HostController)")
@@ -37,8 +42,13 @@ public class HostChecker {
 	
 	@Around("within(com.example.demo.controller.HostController)")
 	public Object HostcheckLogin(ProceedingJoinPoint jp) throws Throwable {
+		
 
 		Object result = jp.proceed();
+		if(hostaccount==null) {
+			result = "redirect:/host/index";
+		}
+		
 		Integer id = hostaccount.getId();
 		String name = hostaccount.getName();
 

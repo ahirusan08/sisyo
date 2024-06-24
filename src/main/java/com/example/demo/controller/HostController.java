@@ -48,7 +48,13 @@ public class HostController {
 
 	@GetMapping("/select")
 	public String select() {
-
+		
+		session.removeAttribute("book");
+		session.removeAttribute("userId");
+		session.removeAttribute("name");
+		System.out.println("userId:"+(String)session.getAttribute("userId"));
+		
+		
 		return "select";//G202機能選択画面
 	}
 
@@ -74,8 +80,8 @@ public class HostController {
 			model.addAttribute("error", error);
 			return "rentalSearch";
 		}
+		
 		//本ID、利用者IDをもとにタイトル、利用者名を検索
-
 		Optional<Book> bookrecord = bookRepository.findById(bookId);
 		Optional<User> userrecord = userRepository.findById(userId);
 
@@ -99,10 +105,12 @@ public class HostController {
 			return "rentalSearch";
 		}
 
-		//セッションスコープにsetAttributeで保存 キー名迷い中
+		//セッションスコープにsetAttributeで保存
 		session.setAttribute("book", book);
 		session.setAttribute("userId", userId);
 		session.setAttribute("name", user.getName());
+		
+		System.out.println("userId:"+(String)session.getAttribute("userId"));
 
 		//↓貸出返却の選択へ
 		return "rentalSelect";//G212貸出・返却選択
@@ -139,9 +147,8 @@ public class HostController {
 			return "rentalSelect";
 		}
 		LocalDateTime time = rentalrecord.getLimitDate();
-		DateTimeFormatter FMT = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
-		model.addAttribute("limitDate", time.format(FMT));
+		model.addAttribute("limitDate", time.format(DateTimeFormatter.ofPattern("yyyy/MM/dd")));
 		return "lendBook";//G213貸出完了
 	}
 
@@ -156,7 +163,7 @@ public class HostController {
 
 		if (rentalrecord.isPresent()) {
 			Rental rent = rentalrecord.get();
-			rent.update(1);
+			rent.update(account.getId());
 			rentalRepository.saveAndFlush(rent);
 		} else {
 			Optional<Rental> bookrecord = rentalRepository.findByBookIdAndVersionNo(book.getId(), 1);

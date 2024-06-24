@@ -84,28 +84,45 @@ public class BookController {
 		for (int i = 0; i < allBooks; i++) {//すべての本に対して
 			rentals = rentalRepository.findByBookId(i + 1);//bookIdの一致するrentalsを検索
 
-			for (int j = 0; j < 31; j++) {//すべての日程に対して
-				for (Rental r : rentals) {//rentalsに対して
+			for (Rental r : rentals) {//rentalsに対して
+				for (int j = 0; j < 31; j++) {//すべての日程に対して
+
+					System.out.println("貸出日：" + r.getRentalDate());
 
 					//③-0	 まだ返却されていない場合
 					if (r.getReturnDate() == null) {
 						r.setReturnDate(r.getLimitDate());//返却日に返却期限日を仮set
 					}
+
 					//③-1	 月をまたがない予約(貸出日と返却期限日が今月)
-					LocalDate today = LocalDate.now();
+					//LocalDate today = LocalDate.now();
 					if (r.getRentalDate().getMonthValue() == month && r.getReturnDate().getMonthValue() == month
 							&& r.getRentalDate().getYear() == year && r.getReturnDate().getYear() == year) {
-						
-						
-						if (r.getRentalDate().getDayOfMonth() <= j + 1 && r.getReturnDate().getDayOfMonth() > j + 1) {
+
+						LocalDate today = LocalDate.now();
+						System.out.println("today:" + today);
+
+						if (r.getRentalDate().getDayOfMonth() <= j + 1
+								&& r.getReturnDate().getDayOfMonth() >= j + 1) {
+							System.out.println(r.getRentalDate());
 							rentalBook[i][j] = 1;
+
+							if (
+							//r.getRentalDate() == r.getReturnDate() //貸し出した日に返却された場合
+							r.getRentalDate().isEqual(r.getReturnDate())
+									&& r.getRentalDate().getDayOfMonth() == today.getDayOfMonth()//かつ 当日の貸出の場合
+
+							) {
+
+								rentalBook[i][j] = 0;
 							
-						}else if (r.getRentalDate()==r.getReturnDate() //貸し出した日に返却された場合
-								&& r.getRentalDate().getDayOfMonth() == today.getDayOfMonth()//かつ 当日の貸出の場合
-						) {
-							rentalBook[i][j] = 0;
+
+							}
+
+							
 
 						}
+
 					}
 
 					//③-2	 月をまたぐ予約
@@ -123,19 +140,19 @@ public class BookController {
 							rentalBook[i][j] = 1;
 						}
 					}
-					
+
 					//③-3年をまたぐ予約
 					//③-3-1 貸出日は今月だが返却日が来月のとき(12月末の貸出)
-					if (r.getRentalDate().getMonthValue() == month && r.getReturnDate().getMonthValue() == month -11
-							&& r.getRentalDate().getYear() == year && r.getReturnDate().getYear() == year+1) {
+					if (r.getRentalDate().getMonthValue() == month && r.getReturnDate().getMonthValue() == month - 11
+							&& r.getRentalDate().getYear() == year && r.getReturnDate().getYear() == year + 1) {
 						if (r.getRentalDate().getDayOfMonth() <= j + 1) {
 							rentalBook[i][j] = 1;
 						}
 					}
-					
+
 					//③-3-2 貸出日は先月だが返却日が今月のとき(1月初旬の返却)
 					if (r.getRentalDate().getMonthValue() == month + 11 && r.getReturnDate().getMonthValue() == month
-							&& r.getRentalDate().getYear() == year-1 && r.getReturnDate().getYear() == year) {
+							&& r.getRentalDate().getYear() == year - 1 && r.getReturnDate().getYear() == year) {
 						if (r.getReturnDate().getDayOfMonth() >= j + 1) {
 							rentalBook[i][j] = 1;
 						}

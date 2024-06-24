@@ -34,6 +34,8 @@ public class HostAccountController {
 	public String index() {
 		//セッション破棄、強制返却処理AOP？
 		session.invalidate();
+		System.out.println("Hid:"+haccount.getId());
+		System.out.println("Hname:"+haccount.getName());
 
 		return "hostLogin";
 	}
@@ -60,9 +62,11 @@ public class HostAccountController {
 			m.addAttribute("error", "管理者IDまたはパスワードが一致していません");
 			return "hostLogin";
 		}
-
+		
 		haccount.setName(host.getName());
 		haccount.setId(host.getId());
+		System.out.println("Hid:"+haccount.getId());
+		System.out.println("Hname:"+haccount.getName());
 		
 		return "select";//G202
 
