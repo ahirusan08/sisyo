@@ -52,7 +52,7 @@ public class HostController {
 		session.removeAttribute("book");
 		session.removeAttribute("userId");
 		session.removeAttribute("name");
-		System.out.println("userId:"+(String)session.getAttribute("userId"));
+		System.out.println("userId:"+session.getAttribute("userId"));
 		
 		
 		return "select";//G202機能選択画面
@@ -110,7 +110,7 @@ public class HostController {
 		session.setAttribute("userId", userId);
 		session.setAttribute("name", user.getName());
 		
-		System.out.println("userId:"+(String)session.getAttribute("userId"));
+		System.out.println("userId:"+session.getAttribute("userId"));
 
 		//↓貸出返却の選択へ
 		return "rentalSelect";//G212貸出・返却選択
