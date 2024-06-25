@@ -52,7 +52,7 @@ public class Checker {
 			Integer vnum = rental.getVersionNo();
 
 			if (vnum == 1) {
-				rental.setVersionNo(2);
+				rental.update(1);//管理者は1名なので1
 			}
 
 			rentalrepository.saveAndFlush(rental);
