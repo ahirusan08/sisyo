@@ -24,6 +24,7 @@ import com.example.demo.repository.RentalRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 
 @Controller
 @RequestMapping("/host")
@@ -127,6 +128,7 @@ public class HostController {
 		} //G212貸出・返却選択
 	}
 
+	@Transactional
 	@GetMapping("/rental/lend")
 	public String lendBook(Model model) {
 
@@ -152,6 +154,7 @@ public class HostController {
 		return "lendBook";//G213貸出完了
 	}
 
+	@Transactional
 	@GetMapping("/rental/return")
 	public String returnBook(Model model) {
 		//返却処理
@@ -188,6 +191,7 @@ public class HostController {
 		return "addBook";//G221
 	}
 
+	@Transactional
 	@PostMapping("/add/book/done")
 	public String addBookDone(Model model,
 			@RequestParam(name = "title", required = false) String title,

@@ -17,6 +17,7 @@ import com.example.demo.model.UserAccount;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 
 @Controller
 @RequestMapping("/user")
@@ -123,7 +124,8 @@ public class UserAccountController {
 
 		return "checkAddUser";//G112内容確認画面へ
 	}
-
+	
+	@Transactional
 	@RequestMapping(value = "/add/done", method = { RequestMethod.GET, RequestMethod.POST })
 	public String addUser(
 			@RequestParam(name = "name", required = false) String name,
