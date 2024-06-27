@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Rental;
@@ -26,9 +25,6 @@ public interface RentalRepository extends JpaRepository<Rental, Integer> {
 
 	List<Rental> findByReturnDateIsNullAndVersionNoLessThanAndLimitDateLessThan(Integer no, LocalDateTime today);
 
-	@Query(value = "SELECT * FROM rentals "
-			+ "WHERE rental_date::TEXT LIKE ?1 "
-			+ "AND limit_date::TEXT LIKE ?2", nativeQuery = true)
-	List<Rental> rental(String ym1, String ym2);
+
 
 }
